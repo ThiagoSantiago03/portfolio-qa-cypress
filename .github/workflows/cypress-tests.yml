@@ -1,0 +1,28 @@
+# Nome do seu workflow, aparecerá na aba "Actions" do GitHub
+name: Cypress Tests
+
+# Gatilho (trigger): este workflow vai rodar toda vez que houver um push para a branch 'main'
+on: [push]
+
+# Tarefas (jobs) a serem executadas
+jobs:
+  # Nome da tarefa
+  cypress-run:
+    # Máquina virtual que será usada (Ubuntu é a mais comum e barata)
+    runs-on: ubuntu-latest
+
+    # Passos da tarefa
+    steps:
+      # 1. Pega o código do seu repositório
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # 2. Ação oficial do Cypress para GitHub Actions
+      # Ela instala o Cypress, as dependências (npm install) e roda os testes
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          # Comando para rodar os testes em modo headless
+          command: npx cypress run
+          # Navegador que será usado para o teste
+          browser: chrome

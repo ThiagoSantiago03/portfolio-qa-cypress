@@ -1,0 +1,9 @@
+# Ignorar a pasta de dependências do Node.js
+node_modules/
+
+# Ignorar vídeos e screenshots gerados pelo Cypress nos testes
+cypress/videos/
+cypress/screenshots/
+
+# Arquivos de log do npm
+npm-debug.log*
